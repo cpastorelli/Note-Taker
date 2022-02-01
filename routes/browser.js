@@ -4,25 +4,25 @@ const browser = require('express').Router();
 
 
 // 
-browser.get('/browser', (req, res) => {
+browser.get('/', (req, res) => {
 
 });
 
 
 // 
-browser.post('/browser', (req, res) => {
+browser.post('/', (req, res) => {
 
 });
 
 
 // 
-browser.put('/browser', (req, res) => {
+browser.put('/', (req, res) => {
 
 });
 
 
 // 
-browser.delete('/browser/:id', (req, res) => {
+browser.delete('/:id', (req, res) => {
 
 });
 
@@ -31,7 +31,7 @@ browser.delete('/browser/:id', (req, res) => {
 // testing wildcard setting for any alternative pages
 browser.get('*', (req,res) => {
     res.json(`Unable to find this page.`);
-    // res.sendFile(path)
+    // res.sendFile(path.join(__dirname))
 });
 
 // export to use in server file
