@@ -3,10 +3,8 @@ const express = require('express');
 
 // brought in routes from routes folders
 const api = require('./routes/index.js');
-const browser = require('./routes/browser.js');
 
-
-// initializing the applicaion & setting the port
+// initializing the applicaion & setting the port for heroku and localhost
 const app = express();
 const PORT = process.env.PORT || 3001;
 
