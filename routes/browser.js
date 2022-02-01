@@ -1,37 +1,18 @@
 // brings in the module from NPM 
 // and runs router function that returns a router object
 const browser = require('express').Router();
+const path = require('path');
 
 
-// 
-browser.get('/', (req, res) => {
-
+// when going to /notes in browser, notes.html will be loaded
+browser.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/notes.html'))
 });
 
-
-// 
-browser.post('/', (req, res) => {
-
-});
-
-
-// 
-browser.put('/', (req, res) => {
-
-});
-
-
-// 
-browser.delete('/:id', (req, res) => {
-
-});
-
-
-
-// testing wildcard setting for any alternative pages
+// testing wildcard setting for any alternative paths
 browser.get('*', (req,res) => {
-    res.json(`Unable to find this page.`);
-    // res.sendFile(path.join(__dirname))
+    console.log(`unidentified path accessed, redirected to index.html`);
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // export to use in server file

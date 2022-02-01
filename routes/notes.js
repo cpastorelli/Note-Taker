@@ -39,6 +39,7 @@ notes.delete('/notes/:id', (req, res) => {
 
 // testing wildcard setting for any alternative pages
 notes.get('*', (req,res) => {
+    console.log(`unable to find this path.`)
     res.json(`Unable to find this page.`);
 });
 
