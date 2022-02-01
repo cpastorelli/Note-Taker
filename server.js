@@ -2,7 +2,8 @@
 const express = require('express');
 
 // brought in routes from routes folders
-const apiRoutes = require('./routes/apiRoutes');
+const api = require('./routes/index.js');
+const browser = require('./routes/browser.js');
 
 
 // initializing the applicaion & setting the port
@@ -17,7 +18,8 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
 
 // middleware to access base routes with /api to be routed to apiRoutes
-app.use('/api', apiRoutes);
+app.use('/api', api);
+app.use('/',  api);
 
 // begins the server on the port number. Shows the port number in the console.log
 app.listen(PORT, () => console.log(`View me on port: ${PORT}!`));
