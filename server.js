@@ -2,8 +2,8 @@
 const express = require('express');
 
 // brought in routes from routes folders
-const api = require('./routes/index.js');
-
+const api = require('./routes/index');
+const browser = require('./routes/browser')
 // initializing the applicaion & setting the port for heroku and localhost
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,7 +17,7 @@ app.use(express.static('public'));
 
 // middleware to access base routes with /api to be routed to apiRoutes
 app.use('/api', api);
-app.use('/',  api);
+app.use('/',  browser);
 
 // begins the server on the port number. Shows the port number in the console.log
 app.listen(PORT, () => console.log(`View me on port: ${PORT}!`));
