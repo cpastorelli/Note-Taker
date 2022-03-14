@@ -34,14 +34,16 @@ class Collection {
     }
 
     newNote(note) {
-        const { title, inputText} = note;
-
-        if (!title || !inputText) {
+        const { title, text} = note;
+        console.log(title);
+        console.log(text);
+        console.log(note);
+        if (!title || !text) {
             console.log(`Your note must have both a body and a title.`);
             throw new Error('Title and Body must have something in them.');
         }
     
-        const newNote = { title, inputText, id: uuidv4() };
+        const newNote = { title, text,  id: uuidv4() };
 
         return this.getNotes()
         .then(notes => [...notes, newNote])

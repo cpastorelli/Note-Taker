@@ -1,6 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "inputText":"Test text"
-    }
-]
+[{"title":"Test Title","text":"Test text"},{"title":"Woof","text":"Caw","id":"f44abf35-44a5-45fe-929b-c96455d171a0"}]

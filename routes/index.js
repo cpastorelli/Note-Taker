@@ -19,7 +19,7 @@ router.get('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
     collection
     .deleteNote(req.params.id)
-    .then(() => { return res.status(200).json({message: 'Note has been deleted!'})})
+    .then(() => { return res.status(200).json({ message: 'Note has been deleted!' }) })
     .catch((err) => {
         console.log(`Something went wrong! Error Msg: ${err}`);
         res.status(500).json(err);
@@ -29,7 +29,7 @@ router.delete('/notes/:id', (req, res) => {
 router.post('/notes', (req, res) => {
     collection
     .newNote(req.body)
-    .then((note) => { return res.status(200).json(note)})
+    .then(() => { return res.status(200).json({ message: 'Note has been created!' })})
     .catch((err) => {
         console.log(`Something went wrong! Error Msg: ${err}`);
         res.status(500).json(err);
