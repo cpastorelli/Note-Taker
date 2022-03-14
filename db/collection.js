@@ -13,7 +13,7 @@ class Collection {
 
     getNotes() {
         return this.read().then((notes) => {
-            const grabbedNotes;
+            let grabbedNotes;
 
             try {
                 grabbedNotes = [].concat(JSON.parse(notes));
