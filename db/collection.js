@@ -1,22 +1,35 @@
 const {v4: uuidv4} = require('uuid');
 const fs = require('fs');
+const util = require('util');
+const rFileAsync = util.promisify(fs.readFile);
+const wFileAsync = util.promisify(fs.writeFile);
+
 
 class Collection {
-    read() {
-        return readFileSync('db/db.json', 'utf8')
+    constructor() {
+        this.lastId = 0;
     }
+
+    read() {
+        return rFileAsync('db/db.json', 'utf8');
+    }
+
     write(note) {
-        return writeFileSync('db/db.json', JSON.stringify(note));
+        return wFileAsync('db/db.json', JSON.stringify(note));
     }
 
     getNotes() {
-        return this.read().then((notes) => {
+        return this.read()
+        .then(notes => {
             let grabbedNotes;
 
-            try {
+            try { 
                 grabbedNotes = [].concat(JSON.parse(notes));
-            } catch(err) {
-                grabbedNotes = [];            }
+            } catch(err) {  
+                console.log(`Something went wonky. ${err}`);
+                grabbedNotes = [];
+            }
+            return grabbedNotes;
         })
     }
 
@@ -25,12 +38,14 @@ class Collection {
 
         if (!title || !inputText) {
             console.log(`Your note must have both a body and a title.`);
+            throw new Error('Title and Body must have something in them.');
         }
     
-        const newNote = { title, text, id: uuidv4() };
+        const newNote = { title, inputText, id: uuidv4() };
+
         return this.getNotes()
-        .then((notes) => [...notes, newNote])
-        .then((updateNotes) => this.write(updateNotes))
+        .then(notes => [...notes, newNote])
+        .then(updateNote => this.write(updateNote))
         .then(() => newNote);
     }
 
