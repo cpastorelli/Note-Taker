@@ -16,4 +16,4 @@ router.get('*', (req,res) => {
 });
 
 // export to use in server file
-module.exports = browser;
+module.exports = router;

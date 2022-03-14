@@ -1,14 +1,12 @@
 const {v4: uuidv4} = require('uuid');
 const fs = require('fs');
-const notes = require('../routes/notes');
-
 
 class Collection {
     read() {
-        return readFileAsync('db/db.json', 'utf8')
+        return readFileSync('db/db.json', 'utf8')
     }
     write(note) {
-        return writeFileAsync('db/db.json', JSON.stringify(note));
+        return writeFileSync('db/db.json', JSON.stringify(note));
     }
 
     getNotes() {
@@ -42,3 +40,5 @@ class Collection {
             .then((filtered) => this.write(filtered));
     }
 }
+
+module.exports = new Collection();
