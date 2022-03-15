@@ -6,9 +6,6 @@ const wFileAsync = util.promisify(fs.writeFile);
 
 
 class Collection {
-    constructor() {
-        this.lastId = 0;
-    }
 
     read() {
         return rFileAsync('db/db.json', 'utf8');
