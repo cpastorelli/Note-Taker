@@ -6,6 +6,8 @@ This site was made to showcase how using different ulities from Node.js and Expr
 ## Usage
 This is to showcase how one can create a site for their own notes using express and writing to a JSON file. 
 
+[Video Demonstration of site usage](https://www.screencast.com/t/vSkTvgc7kv83)
+
 ## Installation
 ```
 npm i
